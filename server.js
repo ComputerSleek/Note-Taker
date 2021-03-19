@@ -11,13 +11,14 @@ const PORT =  process.env.PORT || 8080;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.set('view engine', 'ejs')
 
 // 2 routes
-require("./public/index.html")(app);
-require("./public/notes.html")(app);
+// require("./public/index.html")(app);
+// require("./public/notes.html")(app);
 
 app.get("/", function(req, res) {
-    res.json(path.join(__dirname, "public/index.html"));
+    res.render("index");
   });
 
 app.listen(PORT, () => {
